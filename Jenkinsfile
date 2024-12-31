@@ -14,6 +14,17 @@ pipeline {
         
         stage('Build') {
             steps {
+                script {
+                    def zipInstalled = sh(script: "command -v zip || echo not-found", returnStdout: true).trim()
+                    if (zipInstalled == "not-found") {
+                        error "The 'zip' command is not installed. Please install it on the Jenkins agent."
+                    }
+                }
+                sh 'zip -r webapp.zip .'
+            }
+        }
+    }
+}
                 echo 'Building the app'
                 sh "pwd"
                 sh "ls"
