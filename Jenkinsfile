@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         SSH_CRED = credentials('server-key')
-        def CONNECT = 'ssh -o StrictHostKeyChecking=no ubuntu@15.222.255.218'
+        def CONNECT = 'ssh -o StrictHostKeyChecking=no ubuntu@15.222.255.21'
     }
     stages {
         
